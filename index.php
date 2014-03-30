@@ -1,4 +1,6 @@
 <?php
+  include_once "php/AnalyticsTracking.php";
+
   require_once "php/Application.php";
   require_once "php/Views.php";
   require_once "php/DBServer.php";
