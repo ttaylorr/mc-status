@@ -27,7 +27,7 @@
         $points = array();
         $x = 0;
         foreach ($server->getPings() as $ping) {
-          $points[] = array('x' => $x, 'y' => intval($ping->getPlayers()));
+          $points[] = array('label' => $server->getName(), 'x' => $x, 'y' => intval($ping->getPlayers()));
           $x++;
         }
 
