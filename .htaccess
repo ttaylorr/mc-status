@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /
+
+Options All -Indexes
