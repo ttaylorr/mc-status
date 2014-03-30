@@ -37,7 +37,7 @@
 
       $chart['data'] = $data;
       $chart['legend']['cursor'] = 'pointer';
-      return json_encode($chart, JSON_PRETTY_PRINT);
+      return json_encode($chart);
     }
   }
 ?>
