@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="http://ttaylorr.com">Made with &hearts; by ttaylorr</a>
+              <a href="http://ttaylorr.com">Made with <span style="color:red;">&hearts;</span> by ttaylorr</a>
             </li>
           </ul>
         </div>
