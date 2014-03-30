@@ -21,8 +21,12 @@
       $result = $this->db->query("SELECT * FROM servers");
       
       while($row = $result->fetch_assoc()) {
-        $this->servers[] = new DBServer($row);
+        $this->servers[] = new DBServer($row, $this->dbc());
       }
+    }
+
+    function allPings() {
+      return $this->db->query("SELECT * FROM pings")->fetch_assoc();
     }
 
     function dbc() {

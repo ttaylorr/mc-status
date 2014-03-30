@@ -16,6 +16,5 @@
     $ping = new DBPing();
     $ping->makePing($server);
     $ping->toDatabase($app->dbc());
-    print_r($ping);
   }
 ?>
