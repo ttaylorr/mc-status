@@ -1,3 +1,4 @@
+#!/usr/bin/php -q
 <?php
   require_once "Application.php";
   require_once "DBPing.php";
