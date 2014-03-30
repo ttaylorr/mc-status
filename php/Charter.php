@@ -14,6 +14,7 @@
 
     function render() {
       $chart = array();
+      $chart['title']['text'] = "Last 24 Hours";
       $chart['zoomEnabled'] = true;
 
       $data = array();

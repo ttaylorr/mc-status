@@ -19,7 +19,9 @@
     }
 
     private function populatePings($dbc) {
-      $result = $dbc->query("SELECT * FROM pings WHERE server_name = '".$this->name."'");
+      $offset = time() - (24*60*60);
+      $query = "SELECT * FROM pings WHERE server_name = '".$this->name."' AND `time` >= " . $offset;
+      $result = $dbc->query($query);
       while($row = $result->fetch_assoc()) {
         $ping = new DBPing();
         $ping->fromDatabase($row, $dbc);

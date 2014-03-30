@@ -41,7 +41,7 @@
         echo($view->buildServerTables());
         $charter = new Charter($app);
       ?>
-      <div id="chart" style="height: 500px; width: 100%;"></div>
+      <div id="chart" style="height: 525px; width: 100%;"></div>
       <script>
         var chart = new CanvasJS.Chart("chart", <?php echo $charter->render(); ?>);
         chart.render();
