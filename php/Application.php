@@ -1,11 +1,12 @@
 <?php
+  require_once "DBServer.php";
 
   class Application {
     private $db = null;
     private $servers = array();
 
-    function __construct() {
-      $config = json_decode(file_get_contents("./config/config.json"), true);
+    function __construct($config_path) {
+      $config = json_decode(file_get_contents($config_path), true);
 
       $hostname = $config['hostname'];
       $db_name = $config['db-name'];
@@ -22,6 +23,10 @@
       while($row = $result->fetch_assoc()) {
         $this->servers[] = new DBServer($row);
       }
+    }
+
+    function dbc() {
+      return $this->db;
     }
 
     function getServers() {

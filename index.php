@@ -3,7 +3,7 @@
   require_once "php/Views.php";
   require_once "php/DBServer.php";
 
-  $app = new Application();
+  $app = new Application("./config/config.json");
   $view = new Views($app);
 ?>
 <!DOCTYPE html>
