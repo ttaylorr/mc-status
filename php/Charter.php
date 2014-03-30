@@ -14,6 +14,7 @@
 
     function render() {
       $chart = array();
+      $chart['animationEnabled'] = true;
       $chart['title']['text'] = "Last 24 Hours";
       $chart['zoomEnabled'] = true;
 
@@ -23,6 +24,7 @@
         $server_data['type'] = 'line';
         $server_data['showInLegend'] = true;
         $server_data['lineThickness'] = intval(3);
+        $server_data['toolTipContent'] = "<b>" . $server->getName() . "</b><br/>Players: {y}";
         $server_data['name'] = $server->getName();
 
         $points = array();

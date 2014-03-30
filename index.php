@@ -41,11 +41,31 @@
         echo($view->buildServerTables());
         $charter = new Charter($app);
       ?>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#" data-name="line">Line Graph</a></li>
+        <li><a href="#" data-name="scatter">Scatter Chart</a></li>
+        <li><a href="#" data-name="stackedArea">Stacked Area</a></li>
+        <li><a href="#" data-name="stackedColumn">Stacked Column</a></li>
+        <li><a href="#" data-name="stackedBar">Stacked Bar</a></li>
+      </ul>
       <div id="chart" style="height: 525px; width: 100%;"></div>
       <script>
         var chart = new CanvasJS.Chart("chart", <?php echo $charter->render(); ?>);
-        chart.render();
-        $(".canvasjs-chart-credit").remove();
+        doRender(chart);
+
+        $(".nav li a").click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+          for (var i = 0; i < chart.options.data.length; i++) {
+            chart.options.data[i].type = $(e.target).attr('data-name');
+          }
+          doRender(chart);
+        });
+
+        function doRender(chart) {
+          chart.render();
+          $(".canvasjs-chart-credit").remove();
+        }
       </script>
     </div>
     <footer style="padding-top: 48px;text-align:center;">
