@@ -20,7 +20,8 @@
 
     private function populatePings($dbc) {
       $offset = time() - (24*60*60);
-      $query = "SELECT * FROM pings WHERE server_name = '".$this->name."' AND `time` >= " . $offset;
+      # ignore pings that did not get responded to
+      $query = "SELECT * FROM pings WHERE server_name = '".$this->name."' AND `time` >= " . $offset . " AND `players` != 0";
       $result = $dbc->query($query);
       while($row = $result->fetch_assoc()) {
         $ping = new DBPing();

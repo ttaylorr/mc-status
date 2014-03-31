@@ -22,16 +22,15 @@
       foreach ($this->app->getServers() as $server) {
         $server_data = array();
         $server_data['type'] = 'line';
+        $server_data['xValueType'] = 'dateTime';
         $server_data['showInLegend'] = true;
         $server_data['lineThickness'] = intval(3);
         $server_data['toolTipContent'] = "<b>" . $server->getName() . "</b><br/>Players: {y}";
         $server_data['name'] = $server->getName();
 
         $points = array();
-        $x = 0;
         foreach ($server->getPings() as $ping) {
-          $points[] = array('label' => $server->getName(), 'x' => $x, 'y' => intval($ping->getPlayers()));
-          $x++;
+          $points[] = array('label' => $server->getName(), 'x' => $ping->getTime(), 'y' => intval($ping->getPlayers()));
         }
 
         $server_data['dataPoints'] = $points;

@@ -33,7 +33,7 @@
       $this->players = $row[self::PLAYERS_FIELD];
       $this->maxplayers = $row[self::MAX_PLAYERS_FIELD];
       $this->ping = $row[self::PING_FIELD];      
-      $this->time = $row[self::PING_FIELD];      
+      $this->time = intval($row[self::TIME_FIELD]) * 1000; # for Canvas.js      
     }
 
     function makePing($server) {
