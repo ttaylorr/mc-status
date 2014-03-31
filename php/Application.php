@@ -41,7 +41,7 @@
       $short = `git rev-parse --short HEAD`;
       $long = `git rev-parse HEAD`;
 
-      return "Current Revision: <a href=https://github.com/ttaylorr/mc/commit/".$long.">".$short."</a>";
+      return "Current Revision: <a href='https://github.com/ttaylorr/mc/commit/".$long."'>".$short."</a>";
     }
   }
 ?>
