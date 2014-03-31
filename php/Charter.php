@@ -25,7 +25,7 @@
         $server_data['xValueType'] = 'dateTime';
         $server_data['showInLegend'] = true;
         $server_data['lineThickness'] = intval(3);
-        $server_data['toolTipContent'] = "<b>" . $server->getName() . "</b><br/>Players: {y}";
+        $server_data['toolTipContent'] = "<b>" . $server->getName() . "</b> ({x})<br/>Players: {y}";
         $server_data['name'] = $server->getName();
 
         $points = array();
