@@ -8,3 +8,6 @@ php:
 
 env:
   - DB=mysql
+
+notifications:
+  email: false
