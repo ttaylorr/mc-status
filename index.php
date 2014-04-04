@@ -16,9 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Minecraft Server Tracking</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/jquery-2.1.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/canvasjs.min.js"></script>
     <style>
       body {
         padding-bottom: 40px;
@@ -54,23 +51,13 @@
         <li><a href="#" data-name="stackedBar">Stacked Bar</a></li>
       </ul>
       <div id="chart" style="height: 525px; width: 100%;"></div>
+
+      <script src="js/jquery-2.1.0.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/canvasjs.min.js"></script>
+      <script src="js/app.min.js"></script>
       <script>
-        var chart = new CanvasJS.Chart("chart", <?php echo $charter->render(); ?>);
-        doRender(chart);
-
-        $(".nav li a").click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-          for (var i = 0; i < chart.options.data.length; i++) {
-            chart.options.data[i].type = $(e.target).attr('data-name');
-          }
-          doRender(chart);
-        });
-
-        function doRender(chart) {
-          chart.render();
-          $(".canvasjs-chart-credit").remove();
-        }
+        renderPage(<?php echo $charter->render(); ?>);
       </script>
     </div>
     <footer style="padding-top: 48px;text-align:center;">
