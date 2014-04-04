@@ -11,16 +11,6 @@ module.exports = function(grunt) {
     clean: {
       short: ['./tmp/']
     },
-    php: {
-      dist: {
-        options: {
-          port: 8080,
-          base: 'web',
-          open: true,
-          keepalive: true
-        }
-      }
-    },
     phplint: {
       options: {
         swapPath: './tmp'
@@ -37,7 +27,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-mkdir');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-php');
   grunt.loadNpmTasks('grunt-phplint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
