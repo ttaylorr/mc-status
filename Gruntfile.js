@@ -10,11 +10,11 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      short: ['./tmp/']
+      short: ['tmp/']
     },
     phplint: {
       options: {
-        swapPath: './tmp'
+        swapPath: 'tmp/'
       },
       all: ['php/*.php']
     },
