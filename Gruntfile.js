@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       all: {
         options: {
           mode: 0700,
-          create: ['tmp']
+          create: ['./tmp']
         }
       }
     },
