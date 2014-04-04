@@ -1,0 +1,27 @@
+{
+  "name": "mc",
+  "version": "0.0.0",
+  "description": "Status tracking for popular minecraft servers.",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ttaylorr/mc"
+  },
+  "author": "ttaylorr",
+  "license": "GNU General Public License",
+  "bugs": {
+    "url": "https://github.com/ttaylorr/mc/issues"
+  },
+  "homepage": "http://mc.ttaylorr.com",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-php": "~0.3.2",
+    "grunt-phplint": "0.0.5",
+    "grunt-mkdir": "~0.1.1",
+    "grunt-contrib-clean": "~0.5.0"
+  }
+}
