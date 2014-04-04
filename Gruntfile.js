@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
+    cache: false,
     mkdir: {
       all: {
         options: {
