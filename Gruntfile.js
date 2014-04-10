@@ -32,4 +32,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['mkdir:all', 'phplint:all', 'uglify', 'clean']);
+  grunt.registerTask('make', ['uglify']);
 }
