@@ -31,6 +31,8 @@
     $service_name = key($arr);
     $service_state = $arr[$service_name];
 
+    echo('Updating service: \'' . $service_name . '\' with status \'' . $service_state . '\'' . PHP_EOL);
+
     $service = new DBService(array(
       'name' => $service_name,
       'status' => $service_state

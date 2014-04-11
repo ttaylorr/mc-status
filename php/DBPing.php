@@ -41,6 +41,7 @@
       $data = $pinger->getStatus($server->getIpAddress(), self::DEFAULT_VERSION, self::DEFAULT_PORT);
 
       $this->name = $server->getName();
+      $this->hostname = $server->getIpAddress();
       $this->version = $data[self::VERSION_FIELD];
       $this->players = $data[self::PLAYERS_FIELD];
       $this->maxplayers = $data[self::MAX_PLAYERS_FIELD];
