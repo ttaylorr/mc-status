@@ -1,4 +1,5 @@
 <?php
+  require_once './php/Application.php';
 
   abstract class APIBase {
 

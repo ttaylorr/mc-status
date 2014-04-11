@@ -6,7 +6,7 @@
   class Servers extends APIBase {
     public static function call() {
       $data = array();
-      print_r($_GET);
+
       foreach(parent::app()->getServers() as $server) {
         $pings = array();
         foreach($server->getPings() as $ping) {
