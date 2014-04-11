@@ -20,6 +20,9 @@
       body {
         padding-bottom: 40px;
       }
+      #mojang-status .alert {
+        height: 64px;
+      }
     </style>
   </head>
   <body>
@@ -43,6 +46,20 @@
         echo($view->buildServerTables());
         $charter = new Charter($app);
       ?>
+      <div class="row row-fluid" id="mojang-status">
+        <div class="col-md-3">
+          <div class="alert alert-warning" data-service="minecraft.net" data-name='minecraft.net'></div>
+        </div>
+        <div class="col-md-3">
+          <div class="alert alert-warning" data-service="login.minecraft.net" data-name="Login Server"></div>
+        </div>
+        <div class="col-md-3">
+          <div class="alert alert-warning" data-service="sessionserver.mojang.com" data-name="Session Server"></div>
+        </div>
+        <div class="col-md-3">
+          <div class="alert alert-warning" data-service="skins.minecraft.net" data-name="Skin Server"></div>
+        </div>
+      </div>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#" data-name="line">Line Graph</a></li>
         <li><a href="#" data-name="scatter">Scatter Chart</a></li>
