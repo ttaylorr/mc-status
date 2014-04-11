@@ -23,6 +23,15 @@ module.exports = function(grunt) {
         src: ['js/app.js', 'js/mojang.js'],
         dest: 'js/app.min.js'
       }
+    },
+    watch: {
+      scripts: {
+        files: '**/js/*.js',
+	tasks: ['uglify'],
+        options: {
+	  spawn: false
+	}
+      }
     }
   });
 
@@ -30,6 +39,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-phplint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-composer');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['mkdir:all', 'phplint:all', 'uglify', 'clean']);
   grunt.registerTask('make', ['uglify']);
