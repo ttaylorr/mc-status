@@ -8,14 +8,12 @@ setInterval(function() {
           if (dv.name === v.name) {
             var temp = [];
             $.each(v.pings, function (k, ping) {
-              var newping = {
+              temp.push({
                 label: dv.name,
                 x: ping.queryTime,
                 y: ping.players
-              };
-              temp.push(newping);
+              });
             });
-            console.log(temp);
             dv.dataPoints = temp;
           }
         });
@@ -23,7 +21,7 @@ setInterval(function() {
     }
     doRender(chart);
   });
-}, 30000);
+}, 5000);
 
 function renderPage(options) {
   chart = new CanvasJS.Chart("chart", options);
