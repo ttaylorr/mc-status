@@ -6,7 +6,7 @@
   define('MOJANG_STATUS_URL', 'http://status.mojang.com/check');
 
   define('STATUS_WEB', 'minecraft.net');
-  define('STATUS_LOGIN', 'login.minecraft.net');
+  define('STATUS_LOGIN', 'auth.mojang.com');
   define('STATUS_SESSION', 'sessionserver.mojang.com');
   define('STATUS_SKIN', 'skins.minecraft.net');
 
