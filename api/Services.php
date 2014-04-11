@@ -1,12 +1,9 @@
 <?php
-  require "APIBase.php";
-  require "./php/Application.php";
-  require "./php/DBService.php";
+  require_once "APIBase.php";
+  require_once "./php/DBService.php";
 
-  class ServicesCurrent extends APIBase {
+  class Services extends APIBase {
     public static function call() {
-      header('Content-Type: application/json');
-
       $query = 'select `id`, `name`, `status`, max(`time`) as `time` from services group by `name`';
       $result = parent::app()->dbc()->query($query);
 
@@ -22,7 +19,7 @@
         );
       }
 
-      return json_encode($data);
+      return $data;
     }
   }
 

@@ -2,7 +2,8 @@
   include_once "php/AnalyticsTracking.php";
 
   require_once __DIR__ . '/vendor/autoload.php';
-  require_once "./api/ServicesCurrent.php";
+  require_once "./api/Servers.php";
+  require_once "./api/Services.php";
 
   require_once "php/Application.php";
   require_once "php/Views.php";
@@ -14,8 +15,12 @@
 
   $klein = new \Klein\Klein();
 
-  $klein->respond('GET', '/api/services/current', function() {
-    die(ServicesCurrent::call());
+  $klein->respond('GET', '/api/services/?', function() {
+    Services::invoke();
+  });
+
+  $klein->respond('GET', '/api/servers/?', function() {
+    Servers::invoke();
   });
 
   $klein->dispatch();
