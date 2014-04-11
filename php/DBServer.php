@@ -1,5 +1,7 @@
 <?php
 
+  require 'DBPing.php';
+
   class DBServer {
 
     const NAME_FIELD = "name";
