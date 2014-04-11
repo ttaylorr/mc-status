@@ -25,7 +25,8 @@ $(document).ready(function() {
       }
 
       $(e).html(name + ' is <b>' + status + '</b>');
-      $(e).removeClass('alert-warning');
+      $(e).removeClass();
+      $(e).addClass('alert');
       $(e).addClass(service['bootstrapClass']);
     });
   });
