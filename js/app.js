@@ -1,5 +1,4 @@
 function renderPage(options) {
-  console.log(options);
   var chart = new CanvasJS.Chart("chart", options);
   doRender(chart);
 
