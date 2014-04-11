@@ -11,8 +11,8 @@
         $pings = array();
         foreach($server->getPings() as $ping) {
           $pings[] = array(
-            'players' => $ping->getPlayers(),
-            'maxPlayers' => $ping->getMaxPlayers(),
+            'players' => intval($ping->getPlayers()),
+            'maxPlayers' => intval($ping->getMaxPlayers()),
             'responseTime' => $ping->getPing(),
             'queryTime' => $ping->getTime()
           );
