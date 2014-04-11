@@ -3,7 +3,7 @@ $(document).ready(function() {
     $(elm).html('Fetching status for <b>' + $(elm).attr('data-name') + '</b>');
   });
 
-  $.getJSON('./api/services/current', function (data) {
+  $.getJSON('./api/services', function (data) {
     $.each($('#mojang-status .alert'), function (i, e) {
       var cur = $(e).attr('data-service');
       var service = data[cur];
@@ -25,7 +25,8 @@ $(document).ready(function() {
       }
 
       $(e).html(name + ' is <b>' + status + '</b>');
-      $(e).removeClass('alert-warning');
+      $(e).removeClass();
+      $(e).addClass('alert');
       $(e).addClass(service['bootstrapClass']);
     });
   });

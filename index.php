@@ -1,14 +1,31 @@
 <?php
   include_once "php/AnalyticsTracking.php";
 
+  require_once __DIR__ . '/vendor/autoload.php';
+  require_once "./api/Servers.php";
+  require_once "./api/Services.php";
+
   require_once "php/Application.php";
   require_once "php/Views.php";
   require_once "php/DBServer.php";
   require_once "php/Charter.php";
-
+ 
   $app = new Application("./config/config.json");
   $view = new Views($app);
+
+  $klein = new \Klein\Klein();
+
+  $klein->respond('GET', '/api/services/?', function() {
+    Services::invoke();
+  });
+
+  $klein->respond('GET', '/api/servers/?', function() {
+    Servers::invoke();
+  });
+
+  $klein->dispatch();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
