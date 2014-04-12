@@ -23,8 +23,8 @@
     private $time;
     
     # This function must be called in tandem with either loadFromDatabase, or createPing
-    function __construct() {
-
+    function __construct($start = -1) {
+      $this->time = $start == -1 ? time() : $start;
     }
 
     function fromDatabase($row, $db) {
@@ -46,8 +46,6 @@
       $this->players = $data[self::PLAYERS_FIELD];
       $this->maxplayers = $data[self::MAX_PLAYERS_FIELD];
       $this->ping = $data[self::PING_FIELD];
-
-      $this->time = time();
     }
 
     function toDatabase($db) {

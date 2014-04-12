@@ -11,8 +11,10 @@
   $app = new Application("../config/config.json", false);
   $pinger = new MinecraftPing(30000);
 
+  $start = time();
+
   foreach($app->getServers() as $server) {
-    $ping = new DBPing();
+    $ping = new DBPing($start);
     $ping->makePing($server);
 
     echo('Updated server \'' . $ping->getHostname() . '\' with response time ' . $ping->getPing() . 'ms.' . PHP_EOL);
