@@ -82,6 +82,8 @@ function renderPage(options) {
   });
   updateMojangServices();
 
+  $('table td').tooltip();
+
   chart = new CanvasJS.Chart("chart", options);
   doRender(chart);
 

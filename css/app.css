@@ -3,7 +3,7 @@ body {
 }
 
 .container h2 {
-  margin-top: 0 !important;
+  margin-top: 0 !important;en
   margin-bottom: 14px;
 }
 
@@ -11,4 +11,12 @@ body {
   min-height: 64px;
   text-align: center;
   padding-top: 18px;
+}
+
+table span.glyphicon-arrow-up {
+  color: green;
+}
+
+table span.glyphicon-arrow-down {
+  color: red;
 }
