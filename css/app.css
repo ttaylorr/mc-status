@@ -9,4 +9,6 @@ body {
 
 #mojang-status .alert {
   min-height: 64px;
+  text-align: center;
+  padding-top: 18px;
 }
