@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	grunt.initConfig({
+  grunt.initConfig({
     cache: false,
     mkdir: {
       all: {
@@ -20,17 +20,17 @@ module.exports = function(grunt) {
     },
     uglify: {
       build: {
-        src: ['js/app.js', 'js/mojang.js'],
-        dest: 'js/app.min.js'
+        src: ['js/*.js'],
+        dest: 'js/min/app.min.js'
       }
     },
     watch: {
       scripts: {
         files: '**/js/*.js',
-	tasks: ['uglify'],
+        tasks: ['uglify'],
         options: {
-	  spawn: false
-	}
+          spawn: false
+        }
       }
     }
   });

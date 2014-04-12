@@ -86,10 +86,10 @@
       </ul>
       <div id="chart" style="height: 525px; width: 100%;"></div>
 
-      <script src="js/jquery-2.1.0.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/canvasjs.min.js"></script>
-      <script src="js/app.min.js"></script>
+      <script src="js/min/jquery-2.1.0.min.js"></script>
+      <script src="js/min/bootstrap.min.js"></script>
+      <script src="js/min/canvasjs.min.js"></script>
+      <script src="js/min/app.min.js"></script>
       <script>
         renderPage(<?php echo $charter->render(); ?>);
       </script>
