@@ -38,7 +38,7 @@ class Views {
           $gain = $server->getName() . ' ' . ($improvement >= 0 ? 'gained' : 'lost') . ' ' . abs($improvement) . ' players in the last 24 hours.';
           $icon = "<span class='glyphicon glyphicon-arrow-" . ($improvement >= 0 ? 'up' : 'down') . "'></span>";
 
-          $table .= "<td data-toggle='tooltip' data-placement='right' title='$gain'> $icon ".$server->getMostRecentPing()->getPlayers()." / " . $server->getMostRecentPing()->getMaxPlayers() . "</td>";
+          $table .= "<td rel='tooltip' data-toggle='tooltip' data-placement='right' data-container='body' title='$gain'> $icon ".$server->getMostRecentPing()->getPlayers()." / " . $server->getMostRecentPing()->getMaxPlayers() . "</td>";
           $table .= "</tr>";
           $i++;
         }
