@@ -74,8 +74,6 @@
         <li class="active"><a href="#" data-name="line">Line Graph</a></li>
         <li><a href="#" data-name="scatter">Scatter Chart</a></li>
         <li><a href="#" data-name="stackedArea">Stacked Area</a></li>
-        <li><a href="#" data-name="stackedColumn">Stacked Column</a></li>
-        <li><a href="#" data-name="stackedBar">Stacked Bar</a></li>
       </ul>
       <div id="chart" style="height: 525px; width: 100%;"></div>
 
