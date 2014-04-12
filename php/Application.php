@@ -5,7 +5,7 @@
     private $db = null;
     private $servers = array();
 
-    function __construct($config_path) {
+    function __construct($config_path, $deeplyPopulate = true) {
       $config = json_decode(file_get_contents($config_path), true);
 
       $hostname = $config['hostname'];
@@ -14,14 +14,14 @@
       $password = $config['password'];
 
       $this->db = new mysqli($hostname, $username, $password, $db_name);
-      $this->populateServers();
+      $this->populateServers($deeplyPopulate);
     }
 
-    private function populateServers() {
+    private function populateServers($deeplyPopulate) {
       $result = $this->db->query("SELECT * FROM servers");
       
       while($row = $result->fetch_assoc()) {
-        $this->servers[] = new DBServer($row, $this->dbc());
+        $this->servers[] = new DBServer($row, $this->dbc(), $deeplyPopulate);
       }
     }
 

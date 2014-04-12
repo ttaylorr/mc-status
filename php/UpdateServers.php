@@ -8,7 +8,7 @@
     die("This script may only be invoked over the command line!");
   }
 
-  $app = new Application("../config/config.json");
+  $app = new Application("../config/config.json", false);
   $pinger = new MinecraftPing(30000);
 
   foreach($app->getServers() as $server) {

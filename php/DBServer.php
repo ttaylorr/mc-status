@@ -13,11 +13,14 @@
     private $website;
     private $pings = array();
 
-    function __construct($row, $dbc) {
+    function __construct($row, $dbc, $deeplyPopulate = true) {
       $this->name = $row[self::NAME_FIELD];
       $this->ip_addr = $row[self::IP_FIELD];
       $this->website = $row[self::WEBSITE_FIELD];
-      $this->populatePings($dbc);
+
+      if ($deeplyPopulate) {
+        $this->populatePings($dbc);
+      }
     }
 
     private function populatePings($dbc) {
