@@ -25,7 +25,7 @@
 
   $status = json_decode($_data, true);
 
-  $app = new Application("../config/config.json");
+  $app = new Application("../config/config.json", false);
 
   foreach ($status as $i => $arr) {
     $service_name = key($arr);
