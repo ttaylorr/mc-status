@@ -1,6 +1,26 @@
 var chart = null;
 
-setInterval(function() {
+var updateIn = -1;
+
+var startUpdate = function() {
+  if (updateIn-- <= 0) {
+    updateIn = 30;
+  }
+
+  var text = 'Updating in ' + updateIn + ' second';
+  if (updateIn == 0) {
+    text = 'Updating all data now';
+    updateServers();
+    updateMojangServices();
+  } else if (updateIn != 1) {
+    text += 's';
+  }
+
+  $('h2 small').text(text);
+  setTimeout(startUpdate, 1000);
+};
+
+var updateServers = function() {
   $.getJSON('./api/servers', function(data) {
     if (chart !== null) {
       $.each(data, function (i, v) {
@@ -21,9 +41,47 @@ setInterval(function() {
     }
     doRender(chart);
   });
-}, 5000);
+};
+
+var updateMojangServices = function() {
+  $.getJSON('./api/services', function (data) {
+    $.each($('#mojang-status .alert'), function (i, e) {
+      var cur = $(e).attr('data-service');
+      var service = data[cur];
+
+      var name = $(e).attr('data-name');
+      var className = service.bootstrapClass;
+      var status;
+
+      switch (service['status']) {
+        case 'green':
+          status = 'online';
+          break;
+        case 'yellow':
+          status = 'having problems';
+          break;
+        case 'red':
+          status = 'offline';
+          break;
+      }
+
+      $(e).html(name + ' is <b>' + status + '</b>');
+      $(e).removeClass();
+      $(e).addClass('alert');
+      $(e).addClass(service['bootstrapClass']);
+    });
+  });
+};
 
 function renderPage(options) {
+  startUpdate();
+
+  // Since this data is not bundled with the static page, query onload
+  $.each($('#mojang-status .alert'), function (i, elm) {
+    $(elm).html('Fetching status for <b>' + $(elm).attr('data-name') + '</b>');
+  });
+  updateMojangServices();
+
   chart = new CanvasJS.Chart("chart", options);
   doRender(chart);
 
