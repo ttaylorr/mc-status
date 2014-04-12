@@ -15,9 +15,13 @@
      * in a JSON-compat format.
      * @return The JSON-encoded data from `call()`
      */
-    public static function invoke() {
+    public static function invoke($prettyPrint = false) {
       header('Content-Type: application/json');
-      die(json_encode(static::call()));
+      if ($prettyPrint) {
+        die(json_encode(static::call(), JSON_PRETTY_PRINT));
+      } else {
+        die(json_encode(static::call()));
+      }
     }
 
     protected function app() {
