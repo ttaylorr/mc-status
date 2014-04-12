@@ -24,10 +24,24 @@ module.exports = function(grunt) {
         dest: 'js/min/app.min.js'
       }
     },
+    cssmin: {
+      combine: {
+        files: {
+          'css/min/app.min.css': ['css/app.css']
+        }
+      }
+    },
     watch: {
       scripts: {
         files: '**/js/*.js',
         tasks: ['uglify'],
+        options: {
+          spawn: false
+        }
+      },
+      styles: {
+        files: '**/css/*.css',
+        tasks: ['cssmin'],
         options: {
           spawn: false
         }
@@ -41,7 +55,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-composer');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['mkdir:all', 'phplint:all', 'uglify', 'clean']);
-  grunt.registerTask('make', ['uglify']);
+  grunt.registerTask('default', ['mkdir:all', 'phplint:all', 'uglify', 'cssmin', 'clean']);
+  grunt.registerTask('make', ['uglify', 'cssmin']);
 }

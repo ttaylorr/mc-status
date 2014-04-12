@@ -32,15 +32,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Minecraft Server Tracking</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      body {
-        padding-bottom: 40px;
-      }
-      #mojang-status .alert {
-        height: 64px;
-      }
-    </style>
+    <link href="css/min/bootstrap.min.css" rel="stylesheet">
+    <link href="css/min/app.min.css" rel="stylesheet">
   </head>
   <body>
     <header class="navbar navbar-default">
