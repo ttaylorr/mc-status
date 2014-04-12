@@ -3,7 +3,7 @@
   require 'Application.php';
   require 'DBService.php';
 
-  define('MOJANG_STATUS_URL', 'http://status.mojang.com/check');
+  define('MOJANG_STATUS_URL', 'https://status.mojang.com/check');
 
   define('STATUS_WEB', 'minecraft.net');
   define('STATUS_LOGIN', 'auth.mojang.com');
