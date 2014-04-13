@@ -54,7 +54,7 @@ var updateServers = function() {
       var arrow = $('> td.serverPlayers span.glyphicon', row);
 
       if (current > e.pings[0].players) {
-        tile += 'gained ';
+        title += 'gained ';
         arrow.addClass('glyphicon-arrow-up');
         arrow.removeClass('glyphicon-arrow-down');
       } else {
@@ -63,7 +63,7 @@ var updateServers = function() {
         arrow.removeClass('glyphicon-arrow-up');
       }
 
-      title += Math.abs(current - e.pings[0].players) + ' players in the last 24 hours.'
+      title += Math.abs(current - e.pings[0].players) + ' players over the last 24 hours.'
 
       $('> td.serverPlayers span.text', row).text(current + ' / ' + max);
       $('> td.serverPlayers', row).attr('data-original-title', title);
