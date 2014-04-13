@@ -34,7 +34,15 @@ class Views {
           $table .= "<td>".$server->getIpAddress()."</td>";
           $table .= "<td><a href='".$server->getWebsite()."'>".$server->getWebsite()."</a></td>";
 
-          $improvement = $server->getMostRecentPing()->getPlayers() - $server->getPings()[0]->getPlayers();
+          $pings = $server->getPings();
+
+          $improvement = -1;
+          if (is_array($pings) && ! empty($pings)) {
+            $improvement = $server->getMostRecentPing()->getPlayers() - $pings[0]->getPlayers();
+          } else {
+            $improvement = 0;
+          }
+
           $gain = $server->getName() . ' has ' . ($improvement >= 0 ? 'gained' : 'lost') . ' ' . abs($improvement) . ' players over the last 24 hours.';
           $icon = "<span class='glyphicon glyphicon-arrow-" . ($improvement >= 0 ? 'up' : 'down') . "'></span>";
 
