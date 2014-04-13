@@ -1,6 +1,4 @@
 <?php
-  include_once "php/AnalyticsTracking.php";
-
   require_once __DIR__ . '/vendor/autoload.php';
   require_once "./api/Servers.php";
   require_once "./api/Services.php";
@@ -24,6 +22,8 @@
   });
 
   $klein->dispatch();
+
+  include_once "php/AnalyticsTracking.php";
 ?>
 
 <!DOCTYPE html>
