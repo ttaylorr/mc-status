@@ -63,7 +63,7 @@ var updateServers = function() {
         arrow.addClass('glyphicon-arrow-down');
       }
 
-      title += abs(current - e.pings[0].players) + ' players in the last 24 hours.'
+      title += Math.abs(current - e.pings[0].players) + ' players in the last 24 hours.'
 
       $('> td.serverPlayers span.text', row).text(current + ' / ' + max);
       $('> td.serverPlayers', row).attr('data-original-title', title);
