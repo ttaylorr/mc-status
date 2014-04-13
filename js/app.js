@@ -52,15 +52,15 @@ var updateServers = function() {
       var title = e.name + ' has ';
 
       var arrow = $('> td.serverPlayers span.glyphicon', row);
-      arrow.removeClass('glyphicon-arrow-up');
-      arrow.removeClass('glyphicon-arrow-down');
 
       if (current > e.pings[0].players) {
         tile += 'gained ';
         arrow.addClass('glyphicon-arrow-up');
+        arrow.removeClass('glyphicon-arrow-down');
       } else {
         title += 'lost ';
         arrow.addClass('glyphicon-arrow-down');
+        arrow.removeClass('glyphicon-arrow-up');
       }
 
       title += Math.abs(current - e.pings[0].players) + ' players in the last 24 hours.'
