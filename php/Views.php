@@ -30,7 +30,7 @@ class Views {
         foreach ($servers as $server) {
           $table .= "<tr>";
           $table .= "<td>".$i."</td>";
-          $table .= "<td>".$server->getName()."</td>";
+          $table .= "<td class='serverName'>".$server->getName()."</td>";
           $table .= "<td>".$server->getIpAddress()."</td>";
           $table .= "<td><a href='".$server->getWebsite()."'>".$server->getWebsite()."</a></td>";
 
@@ -38,7 +38,7 @@ class Views {
           $gain = $server->getName() . ' ' . ($improvement >= 0 ? 'gained' : 'lost') . ' ' . abs($improvement) . ' players in the last 24 hours.';
           $icon = "<span class='glyphicon glyphicon-arrow-" . ($improvement >= 0 ? 'up' : 'down') . "'></span>";
 
-          $table .= "<td rel='tooltip' data-toggle='tooltip' data-placement='right' data-container='body' title='$gain'> $icon ".$server->getMostRecentPing()->getPlayers()." / " . $server->getMostRecentPing()->getMaxPlayers() . "</td>";
+          $table .= "<td class='serverPlayers' rel='tooltip' data-players='" . $server->getMostRecentPing()->getPlayers() . "' data-toggle='tooltip' data-placement='right' data-container='body' title='$gain'> $icon <span class='text'>".$server->getMostRecentPing()->getPlayers(). " / " . $server->getMostRecentPing()->getMaxPlayers() . "</span></td>";
           $table .= "</tr>";
           $i++;
         }

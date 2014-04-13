@@ -22,6 +22,7 @@ var startUpdate = function() {
 
 var updateServers = function() {
   $.getJSON('./api/servers', function(data) {
+    // update the chart
     if (chart !== null) {
       $.each(data, function (i, v) {
         $.each(chart.options.data, function (j, dv) {
@@ -39,7 +40,38 @@ var updateServers = function() {
         });
       });
     }
+
+    // update the table
+    $.each(data, function (i, e) {
+      var row = $("table tbody td.serverName:contains('" + e.name + "')").parent();
+      var ping = (e.pings[e.pings.length - 1]);
+
+      var current = ping.players;
+      var max = ping.maxPlayers;
+
+      var title = e.name + ' has ';
+
+      var arrow = $('> td.serverPlayers span.glyphicon', row);
+      arrow.removeClass('glyphicon-arrow-up');
+      arrow.removeClass('glyphicon-arrow-down');
+
+      if (current > e.pings[0].players) {
+        tile += 'gained ';
+        arrow.addClass('glyphicon-arrow-up');
+      } else {
+        title += 'lost ';
+        arrow.addClass('glyphicon-arrow-down');
+      }
+
+      title += abs(current - e.pings[0].players) + ' players in the last 24 hours.'
+
+      $('> td.serverPlayers span.text', row).text(current + ' / ' + max);
+      $('> td.serverPlayers', row).attr('data-original-title', title);
+    });
+
+    // render them both
     doRender(chart);
+    reorderServers();
   });
 };
 
@@ -72,6 +104,24 @@ var updateMojangServices = function() {
     });
   });
 };
+
+function reorderServers() {
+  var arr = $('table tbody tr');
+
+  arr.sort(function(a, b) {
+    var a = $('> .serverPlayers', a).attr('data-players');
+    var b = $('> .serverPlayers', b).attr('data-players');
+
+    return b - a; // descending
+  });
+
+  // redo the numberings
+  arr.each(function (i, e) {
+    $('> td', e).first().text(i + 1);
+  });
+
+  $('table tbody').append(arr);
+}
 
 function renderPage(options) {
   startUpdate();
