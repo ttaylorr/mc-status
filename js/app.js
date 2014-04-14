@@ -67,6 +67,7 @@ var updateServers = function() {
 
       $('> td.serverPlayers span.text', row).text(current + ' / ' + max);
       $('> td.serverPlayers', row).attr('data-original-title', title);
+      $('> td.serverPlayers', row).attr('data-players', current); // Update the data attr for the next round of sorting
     });
 
     // render them both
