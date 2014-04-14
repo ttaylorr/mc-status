@@ -4,7 +4,7 @@
 
   class Services extends APIBase {
     public static function call() {
-      $query = 'select `id`, `name`, `status`, max(`time`) as `time` from services group by `name`';
+      $query = 'select * from services order by `time` desc limit 8';
       $result = parent::app()->dbc()->query($query);
 
       $data = array();
