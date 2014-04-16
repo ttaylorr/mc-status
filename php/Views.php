@@ -24,7 +24,11 @@ class Views {
         $i = 1;
         $servers = $this->app->getServers();
         uasort($servers, function($s1, $s2) {
-          return $s2->getMostRecentPing()->getPlayers() - $s1->getMostRecentPing()->getPlayers();
+          if ($s1->getMostRecentPing() && $s2->getMostRecentPing()) {
+            return $s2->getMostRecentPing()->getPlayers() - $s1->getMostRecentPing()->getPlayers();
+          } else {
+            return false;
+          }
         });
 
         foreach ($servers as $server) {
@@ -46,7 +50,10 @@ class Views {
           $gain = $server->getName() . ' has ' . ($improvement >= 0 ? 'gained' : 'lost') . ' ' . abs($improvement) . ' players over the last 24 hours.';
           $icon = "<span class='glyphicon glyphicon-arrow-" . ($improvement >= 0 ? 'up' : 'down') . "'></span>";
 
-          $table .= "<td class='serverPlayers' rel='tooltip' data-players='" . $server->getMostRecentPing()->getPlayers() . "' data-toggle='tooltip' data-placement='top' data-container='body' title='$gain'> $icon <span class='text'>".$server->getMostRecentPing()->getPlayers(). " / " . $server->getMostRecentPing()->getMaxPlayers() . "</span></td>";
+          $players = $server->getMostRecentPing() !== null ? $server->getMostRecentPing()->getPlayers() : 0;
+          $maxPlayers = $server->getMostRecentPing() !== null ? $server->getMostRecentPing()->getMaxPlayers() : 0;
+
+          $table .= "<td class='serverPlayers' rel='tooltip' data-players='" . $players . "' data-toggle='tooltip' data-placement='top' data-container='body' title='$gain'> $icon <span class='text'>" . $players . " / " . $maxPlayers . "</span></td>";
           $table .= "</tr>";
           $i++;
         }

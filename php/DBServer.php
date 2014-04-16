@@ -52,7 +52,7 @@
     }
 
     function getMostRecentPing() {
-      if (isset($this->pings)) {
+      if ($this->pings && isset($this->pings)) {
         return $this->pings[count($this->pings) - 1];
       } else {
         return null;
