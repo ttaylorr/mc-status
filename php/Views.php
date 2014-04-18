@@ -10,7 +10,7 @@ class Views {
   }
 
   function buildServerTables() {
-    $table = "<table class='table table-hover'>";
+    $table = "<div class='table-responsive'><table class='table table-hover'>";
       $table .= "<thead>";
         $table .= "<tr>";
           $table .= "<th>#</th>";
@@ -58,7 +58,7 @@ class Views {
           $i++;
         }
       $table .= "</tbody>";
-    $table .= "</table>";
+    $table .= "</table></div>";
 
     return $table;
   }
