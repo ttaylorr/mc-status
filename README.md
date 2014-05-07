@@ -1,4 +1,4 @@
-mc [![Build Status](https://travis-ci.org/ttaylorr/mc.svg)](https://travis-ci.org/ttaylorr/mc)
+mc [![Build Status](https://travis-ci.org/ttaylorr/mc-status.svg)](https://travis-ci.org/ttaylorr/mc-status)
 ==
 
 Status tracking for popular minecraft servers.
