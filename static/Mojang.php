@@ -9,6 +9,6 @@
     <div class="alert alert-warning" data-service="sessionserver.mojang.com" data-name="Session Server"></div>
   </div>
   <div class="col-md-3">
-    <div class="alert alert-warning" data-service="skins.minecraft.net" data-name="Skin Server"></div>
+    <div class="alert alert-warning" data-service="textures.minecraft.net" data-name="Skin Server"></div>
   </div>
 </div>
