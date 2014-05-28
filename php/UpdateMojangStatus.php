@@ -8,7 +8,7 @@
   define('STATUS_WEB', 'minecraft.net');
   define('STATUS_LOGIN', 'auth.mojang.com');
   define('STATUS_SESSION', 'sessionserver.mojang.com');
-  define('STATUS_SKIN', 'skins.minecraft.net');
+  define('STATUS_SKIN', 'textures.minecraft.net');
 
   # This script should execute every minute and will ping all servers
   if (php_sapi_name() != 'cli') {
