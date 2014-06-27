@@ -5,7 +5,7 @@ before_install: npm install -g grunt-cli
 install:
   - sudo apt-get install php5-cli
   - php -r "readfile('https://getcomposer.org/installer');" | php
-  - /home/travis/build/ttaylorr/mc/composer.phar require klein/klein v2.0.0
+  - /home/travis/build/ttaylorr/mc-status/composer.phar require klein/klein v2.0.0
   - npm install
 notifications:
   email: false
