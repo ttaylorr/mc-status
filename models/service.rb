@@ -17,7 +17,7 @@ module MCStatus
         MCStatus::ServiceUpdater.new([self]).update!
       end
 
-      def bootstrapize_name
+      def to_bootstrap_name
         return case self.status.downcase
                when 'green'
                  'alert-success'

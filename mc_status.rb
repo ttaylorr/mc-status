@@ -1,10 +1,15 @@
 require_relative 'models/helpers'
-require_relative 'models/service'
+
+require_relative 'routes/index'
 
 module MCStatus
   class Application < Sinatra::Application
     register Sinatra::AssetPack
     register MCStatus::Models::Helpers
+
+    register MCStatus::Routes::Index
+
+    set :views, Proc.new { File.join(Dir.pwd, "views") }
 
     assets do
       serve '/assets/javascripts', :from => 'assets/javascripts'
@@ -24,10 +29,6 @@ module MCStatus
 
     configure do
       enable :partial_underscores
-    end
-
-    get '/' do
-      haml :index
     end
   end
 end
