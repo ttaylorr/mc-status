@@ -15,13 +15,16 @@ module MCStatus
       serve '/assets/javascripts', :from => 'assets/javascripts'
       js :application, [
         '/assets/javascripts/jquery-2.1.1.min.js',
-        '/assets/javascripts/bootstrap.min.js'
+        '/assets/javascripts/bootstrap.min.js',
+        '/assets/javascripts/d3.min.js',
+        '/assets/javascripts/c3.min.js'
       ]
 
       serve '/assets/stylesheets', :from => 'assets/stylesheets'
       css :application, [
         '/assets/stylesheets/bootstrap.min.css',
-        '/assets/stylesheets/application.css'
+        '/assets/stylesheets/application.css',
+        '/assets/stylesheets/c3.css'
       ]
 
       css_compression :sass
