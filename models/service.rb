@@ -1,3 +1,5 @@
+require_relative '../lib/service_updater'
+
 module MCStatus
   module Models
     class Service
@@ -10,6 +12,10 @@ module MCStatus
       field :status, :type => String
 
       index({ :api_name => 1}, { :unique => true, :name => 'name_index'})
+
+      def update!
+        MCStatus::ServiceUpdater.new([self]).fetch_status.save!
+      end
 
       def bootstrapize_name
         return case self.status.downcase
