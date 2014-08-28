@@ -1,0 +1,11 @@
+%section.footer
+  .container.text-muted
+    Check us out on <a href="https://github.com/ttaylorr/mc-status">GitHub</a>!
+    %br
+    &copy; <a href="http://ttaylorr.com">Taylor Blau</a>
+    = "#{Time.now.strftime("%Y")}, All Rights Reserved"
+    %br
+    %br
+    Current Revision:
+    - long_rev = `git rev-parse HEAD`
+    %a{:href => "https://github.com/ttaylorr/mc-status/commit/#{long_rev}"} #{long_rev[0..6]}
