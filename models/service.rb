@@ -14,7 +14,7 @@ module MCStatus
       index({ :api_name => 1}, { :unique => true, :name => 'name_index'})
 
       def update!
-        MCStatus::ServiceUpdater.new([self]).fetch_status.save!
+        MCStatus::ServiceUpdater.new([self]).update!
       end
 
       def bootstrapize_name
