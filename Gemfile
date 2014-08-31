@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'sinatra-base'
 gem 'sinatra-assetpack'
-gem 'sinatra-redis'
 gem 'mongoid'
 gem 'redis'
 gem 'rack'
