@@ -37,6 +37,8 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     redis (3.1.0)
+    redis-namespace (1.5.1)
+      redis (~> 3.0, >= 3.0.4)
     sass (3.3.14)
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -69,6 +71,7 @@ DEPENDENCIES
   mongoid
   rack
   redis
+  redis-namespace
   sass
   sinatra-assetpack
   sinatra-base
