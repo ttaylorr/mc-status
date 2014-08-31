@@ -1,5 +1,7 @@
 require "json"
 
+require_relative "../models/server_ping"
+
 module MCStatus
   class ServerUpdater < Struct.new(:servers)
     @@script_location = File.expand_path("server_ping.php", File.dirname(__FILE__))
@@ -12,6 +14,13 @@ module MCStatus
         ping = get_ping_data(server)
 
         unless ping.nil?
+          MCStatus::Models::ServerPing.create(
+            :server => server,
+            :version_name => ping["server"]["version"]["name"],
+            :max_players => ping["players"]["max"],
+            :players_online => ping["players"]["online"],
+            :created_at => start
+          ).save!
         end
       end
     end
