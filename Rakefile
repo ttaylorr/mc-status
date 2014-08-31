@@ -9,6 +9,10 @@ namespace :minecraft do
   task :services do
     MCStatus::ServiceUpdater.new(MCStatus::Models::Service.all).update!
   end
+
+  task :servers do
+    MCStatus::ServerUpdater.new(MCStatus::Models::Server.all).update!
+  end
 end
 
 namespace :db do
