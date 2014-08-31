@@ -1,6 +1,7 @@
 require_relative 'models/helpers'
 
 require_relative 'routes/index'
+require_relative 'routes/api'
 
 module MCStatus
   class Application < Sinatra::Application
@@ -8,6 +9,7 @@ module MCStatus
     register MCStatus::Models::Helpers
 
     register MCStatus::Routes::Index
+    register MCStatus::Routes::API
 
     set :views, Proc.new { File.join(Dir.pwd, "views") }
 
