@@ -4,16 +4,18 @@ require_relative 'routes/index'
 require_relative 'routes/api'
 
 require_relative 'helpers/redis_helper'
+require_relative 'helpers/server_helper'
 
 module MCStatus
   class Application < Sinatra::Application
     register Sinatra::AssetPack
 
     register MCStatus::Models::Helpers
-    helpers MCStatus::Helpers::RedisHelper
-
     register MCStatus::Routes::Index
     register MCStatus::Routes::API
+
+    helpers MCStatus::Helpers::RedisHelper
+    helpers MCStatus::Helpers::ServerHelper
 
     set :views, Proc.new { File.join(Dir.pwd, "views") }
 

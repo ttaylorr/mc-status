@@ -1,6 +1,9 @@
 module MCStatus
   module Helpers
-    class ServerHelper
+    module ServerHelper
+      def get_latest_ping(server)
+
+      end
     end
   end
 end
