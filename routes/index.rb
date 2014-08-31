@@ -1,3 +1,4 @@
+require_relative '../models/server'
 require_relative '../models/service'
 
 module MCStatus
@@ -8,6 +9,7 @@ module MCStatus
           rendered_services = ['minecraft.net', 'auth.mojang.com', 'sessionserver.mojang.com', 'skins.minecraft.net']
 
           haml :index, :locals => {
+            :servers => MCStatus::Models::Server.all,
             :services => MCStatus::Models::Service.where(:api_name.in => rendered_services)
           }
         end

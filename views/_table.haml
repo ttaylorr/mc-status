@@ -1,1 +1,24 @@
 .table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th #
+        %th Server Name
+        %th Minecraft IP
+        %th Website
+        %th Players
+    %tbody
+      - locals[:servers].each_with_index do |server, index|
+        %tr
+          %td
+            = index + 1
+          %td
+            = server.name
+          %td
+            = server.minecraft_ip
+          %td
+            %a{:href => server.website}
+              = server.website
+          %td
+            - latest_ping = server.server_pings.last
+            = latest_ping.to_frac
