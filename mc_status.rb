@@ -25,7 +25,8 @@ module MCStatus
         '/assets/javascripts/jquery-2.1.1.min.js',
         '/assets/javascripts/bootstrap.min.js',
         '/assets/javascripts/d3.min.js',
-        '/assets/javascripts/c3.min.js'
+        '/assets/javascripts/c3.min.js',
+        '/assets/javascripts/graph.js'
       ]
 
       serve '/assets/stylesheets', :from => 'assets/stylesheets'
@@ -35,6 +36,7 @@ module MCStatus
         '/assets/stylesheets/c3.css'
       ]
 
+      js_compression :coffeescript
       css_compression :sass
     end
 

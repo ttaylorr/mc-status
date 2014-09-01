@@ -17,6 +17,7 @@ module MCStatus
       def to_api_format
         {
           :_id => self.id.to_s,
+          :name => self.name,
           :website => self.website,
           :minecraft => self.minecraft_ip
         }

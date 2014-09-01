@@ -13,10 +13,8 @@ module MCStatus
         end
 
         application.get '/api/servers' do
-          result = {}
-
-          MCStatus::Models::Server.all.each do |server|
-            result[server.name] = server.to_api_format
+          result = MCStatus::Models::Server.all.map do |server|
+            server.to_api_format
           end
 
           result.to_json
