@@ -1,0 +1,27 @@
+.table-responsive
+  %table.table.table-striped.table-hover
+    %thead
+      %tr
+        %th #
+        %th Server Name
+        %th Minecraft IP
+        %th Website
+        %th Players
+    %tbody
+      - index = 0
+      - locals[:pings].each do |server, latest_ping|
+        %tr
+          %td
+            = index += 1
+          %td
+            = server.name
+          %td
+            = server.minecraft_ip
+          %td
+            %a{:href => server.website}
+              = server.website
+          %td
+            - if latest_ping
+              = JSON.parse(latest_ping)["fraction"]
+            - else
+              = "0 / &infin;"

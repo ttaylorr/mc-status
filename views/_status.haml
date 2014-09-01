@@ -1,0 +1,6 @@
+%section
+  .row
+    - locals[:services].each do |service|
+      .col-md-3
+        .alert{:class => service.to_bootstrap_name, :data => {:service_name => service.api_name}}
+          = service.display_name + " is <b>#{service.humanize_status}</b>"

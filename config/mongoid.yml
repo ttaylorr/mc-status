@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: mc_status
+      hosts:
+        - localhost:27017
