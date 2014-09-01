@@ -3,7 +3,7 @@ $(document).ready () ->
     data: {
       x: 'x'
       columns: [],
-      type: 'area'
+      type: 'line'
     },
     axis: {
       x: {
