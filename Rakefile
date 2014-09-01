@@ -1,6 +1,7 @@
 require_relative 'models/helpers'
 require_relative 'models/service'
 require_relative 'models/server'
+require_relative 'models/ping'
 
 require_relative 'config/initializers/seeds/services'
 require_relative 'config/initializers/seeds/servers'
@@ -24,5 +25,6 @@ namespace :db do
   task :dump do
     MCStatus::Models::Service.delete_all
     MCStatus::Models::Server.delete_all
+    MCStatus::Models::Ping.delete_all
   end
 end
