@@ -13,10 +13,10 @@ module MCStatus
       self.servers.each do |server|
         ping = get_ping_data(server)
 
-        unless ping.nil?
+         unless ping.nil?
           MCStatus::Models::Ping.create(
             :server => server,
-            :version_name => ping["server"]["version"]["name"],
+            :version_name => ping["version"]["name"],
             :max_players => ping["players"]["max"],
             :players_online => ping["players"]["online"],
             :created_at => start
