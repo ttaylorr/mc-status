@@ -21,4 +21,7 @@
             %a{:href => server.website}
               = server.website
           %td
-            = JSON.parse(latest_ping)["fraction"]
+            - if latest_ping
+              = JSON.parse(latest_ping)["fraction"]
+            - else
+              = "0 / &infin;"

@@ -9,14 +9,17 @@ module MCStatus
 
         if result.nil?
           last_ping = server.pings.first
-          result = {
-            :max_players => last_ping.max_players,
-            :players_online => last_ping.players_online,
-            :fraction => last_ping.to_frac
-          }.to_json
 
-          redis.set(key, result)
-          redis.expire(key, 1.minute)
+          if last_ping
+            result = {
+              :max_players => last_ping.max_players,
+              :players_online => last_ping.players_online,
+              :fraction => last_ping.to_frac
+            }.to_json
+
+            redis.set(key, result)
+            redis.expire(key, 1.minute)
+          end
         end
 
         result
