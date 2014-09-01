@@ -27,15 +27,28 @@ module MCStatus
         end
 
         application.get '/api/servers/:id' do
-          since = params[:since].to_i unless params[:since].nil?
-          since ||= 0
+          since = Time.at(
+            if params[:since]
+              params[:since].to_i
+            else
+              0
+            end
+          ).to_datetime
 
-          since_datetime = Time.at(since).to_datetime
           server = MCStatus::Models::Server.find(params[:id])
           pings = MCStatus::Models::Ping.where(:created_at.gt => since)
 
+          pings = pings.map do |ping|
+            {
+              :players_online => ping.players_online,
+              :max_players => ping.max_players,
+              :created_at => ping.created_at,
+              :version_name => ping.version_name
+            }
+          end
+
           {
-            :since => since_datetime,
+            :since => since,
             :server => server,
             :pings => pings
           }.to_json
