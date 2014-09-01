@@ -16,11 +16,7 @@ module MCStatus
           result = {}
 
           MCStatus::Models::Server.all.each do |server|
-            result[server.name] = {
-              :_id => server.id.to_s,
-              :website => server.website,
-              :minecraft => server.minecraft_ip
-            }
+            result[server.name] = server.to_api_format
           end
 
           result.to_json
@@ -36,16 +32,9 @@ module MCStatus
           ).to_datetime
 
           server = MCStatus::Models::Server.find(params[:id])
-          pings = MCStatus::Models::Ping.where(:created_at.gt => since)
+          pings = MCStatus::Models::Ping.where(:server => server, :created_at.gt => since)
 
-          pings = pings.map do |ping|
-            {
-              :players_online => ping.players_online,
-              :max_players => ping.max_players,
-              :created_at => ping.created_at,
-              :version_name => ping.version_name
-            }
-          end
+          pings = pings.map { |ping| ping.to_api_format }
 
           {
             :since => since,

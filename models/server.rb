@@ -14,6 +14,14 @@ module MCStatus
       field :website, :type => String
       field :minecraft_ip, :type => String
 
+      def to_api_format
+        {
+          :_id => self.id.to_s,
+          :website => self.website,
+          :minecraft => self.minecraft_ip
+        }
+      end
+
       def ping!
         MCStatus::ServerUpdater.new([self]).update!
       end
