@@ -7,7 +7,6 @@ module MCStatus
     @@script_location = File.expand_path("server_ping.php", File.dirname(__FILE__))
 
     def update!
-      puts @@script_location
       start = Time.now
 
       self.servers.each do |server|
