@@ -126,16 +126,23 @@ class MinecraftPing {
     $j = 0;
     
     while (true) {
-      $k = @fgetc($this->socket);
-
-      if($k === FALSE) return 0;
-
-      $k = Ord($k);
-
-      $i |= ($k & 0x7F) << $j++ * 7;
-
-      if ($j > 5) throw new MinecraftPingException( 'VarInt too big' );
-      if(($k & 0x80) != 128) break;
+      $k = @fgetc( $this->Socket );
+      
+      if( $k === FALSE ) {
+        return 0;
+      }
+      
+      $k = Ord( $k );
+      
+      $i |= ( $k & 0x7F ) << $j++ * 7;
+      
+      if( $j > 5 ) {
+        throw new MinecraftPingException( 'VarInt too big' );
+      }
+      
+      if(( $k & 0x80 ) != 128) {
+        break;
+      }
     }
     
     return $i;
