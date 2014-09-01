@@ -25,6 +25,21 @@ module MCStatus
 
           result.to_json
         end
+
+        application.get '/api/servers/:id' do
+          since = params[:since].to_i unless params[:since].nil?
+          since ||= 0
+
+          since_datetime = Time.at(since).to_datetime
+          server = MCStatus::Models::Server.find(params[:id])
+          pings = MCStatus::Models::Ping.where(:created_at.gt => since)
+
+          {
+            :since => since_datetime,
+            :server => server,
+            :pings => pings
+          }.to_json
+        end
       end
     end
   end
