@@ -8,10 +8,11 @@
         %th Website
         %th Players
     %tbody
-      - locals[:servers].each_with_index do |server, index|
+      - index = 0
+      - locals[:pings].each do |server, latest_ping|
         %tr
           %td
-            = index + 1
+            = index += 1
           %td
             = server.name
           %td
@@ -20,5 +21,4 @@
             %a{:href => server.website}
               = server.website
           %td
-            - latest_ping = server.server_pings.last
-            = latest_ping.to_frac
+            = JSON.parse(latest_ping)["fraction"]

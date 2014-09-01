@@ -8,10 +8,15 @@ module MCStatus
         application.get '/' do
           rendered_services = ['minecraft.net', 'auth.mojang.com', 'sessionserver.mojang.com', 'skins.minecraft.net']
 
-          get_latest_ping(nil)
+          servers = MCStatus::Models::Server.all
+          pings = Hash.new
+          servers.map do |server|
+            pings[server] = get_latest_ping(server)
+          end
 
           haml :index, :locals => {
-            :servers => MCStatus::Models::Server.all,
+            :servers => servers,
+            :pings => pings,
             :services => MCStatus::Models::Service.where(:api_name.in => rendered_services)
           }
         end
