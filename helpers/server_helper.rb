@@ -8,7 +8,7 @@ module MCStatus
         result = redis.get(key)
 
         if result.nil?
-          last_ping = server.server_pings.first
+          last_ping = server.pings.first
           result = {
             :max_players => last_ping.max_players,
             :players_online => last_ping.players_online,

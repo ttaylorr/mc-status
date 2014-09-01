@@ -8,7 +8,7 @@ module MCStatus
       store_in :database => 'mc_servers', :collection => 'servers'
       index({ :minecraft_ip => 1}, { :unique => true, :name => 'ip_index'})
 
-      has_many :server_pings
+      has_many :pings
 
       field :name, :type => String
       field :website, :type => String

@@ -1,6 +1,6 @@
 require "json"
 
-require_relative "../models/server_ping"
+require_relative "../models/ping"
 
 module MCStatus
   class ServerUpdater < Struct.new(:servers)
@@ -14,7 +14,7 @@ module MCStatus
         ping = get_ping_data(server)
 
         unless ping.nil?
-          MCStatus::Models::ServerPing.create(
+          MCStatus::Models::Ping.create(
             :server => server,
             :version_name => ping["server"]["version"]["name"],
             :max_players => ping["players"]["max"],

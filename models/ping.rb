@@ -1,6 +1,6 @@
 module MCStatus
   module Models
-    class ServerPing
+    class Ping
       include Mongoid::Document
       include Mongoid::Timestamps::Created
 
