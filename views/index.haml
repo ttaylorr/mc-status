@@ -2,7 +2,7 @@
   %h2
     Tracked Servers
     %small Updated every 30 seconds
-  = partial :table, :locals => {:pings => pings}
   = partial :status, :locals => {:services => services}
   = partial :graph
+  = partial :table, :locals => {:pings => pings}
   = partial :footer
