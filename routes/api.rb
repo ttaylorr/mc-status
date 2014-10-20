@@ -8,8 +8,18 @@ module MCStatus
   module Routes
     module API
       def self.registered(application)
-        application.before "/api/*" do
+        application.before "/api/?*" do
           content_type :json
+        end
+
+        application.get '/api/?' do
+          {
+            :status => 200,
+            :routes => {
+              :server => "/api/servers/:id",
+              :servers => "/api/servers/"
+            }
+          }.to_json
         end
 
         application.get '/api/servers' do
