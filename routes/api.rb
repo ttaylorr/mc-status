@@ -31,6 +31,7 @@ module MCStatus
         end
 
         application.get '/api/servers/:id' do
+          granularity = 2
           since = Time.at(
             if params[:since]
               params[:since].to_i
@@ -43,6 +44,7 @@ module MCStatus
           pings = MCStatus::Models::Ping.where(:server => server, :created_at.gt => since)
 
           pings = pings.map { |ping| ping.to_api_format }
+          pings = pings.each_slice(granularity).map(&:last)
 
           {
             :since => since,
