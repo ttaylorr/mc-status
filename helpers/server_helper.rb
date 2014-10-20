@@ -12,9 +12,9 @@ module MCStatus
 
           if last_ping
             result = {
+              :name => server.name,
               :max_players => last_ping.max_players,
-              :players_online => last_ping.players_online,
-              :fraction => last_ping.to_frac
+              :players_online => last_ping.players_online
             }.to_json
 
             redis.set(key, result)

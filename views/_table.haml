@@ -22,6 +22,6 @@
               = server.website
           %td
             - if latest_ping
-              = JSON.parse(latest_ping)["fraction"]
+              = "#{latest_ping["players_online"]} / #{latest_ping["max_players"]}"
             - else
               = "0 / &infin;"

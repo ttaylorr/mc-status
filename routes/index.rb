@@ -11,7 +11,13 @@ module MCStatus
           servers = MCStatus::Models::Server.all
           pings = Hash.new
           servers.map do |server|
-            pings[server] = get_latest_ping(server)
+            latest_ping = get_latest_ping(server)
+
+            pings[server] = if latest_ping.nil?
+                              nil
+                            else
+                              JSON.parse(latest_ping)
+                            end
           end
 
           haml :index, :locals => {
