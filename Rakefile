@@ -6,7 +6,7 @@ require_relative 'models/ping'
 require_relative 'config/initializers/seeds/services'
 require_relative 'config/initializers/seeds/servers'
 
-namespace :minecraft do
+namespace :mc do
   task :services do
     MCStatus::ServiceUpdater.new(MCStatus::Models::Service.all).update!
   end

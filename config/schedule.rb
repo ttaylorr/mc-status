@@ -1,4 +1,4 @@
 every 1.minute do
-  rake "minecraft:services"
-  rake "minecraft:servers"
+  rake "mc:services"
+  rake "mc:servers"
 end
