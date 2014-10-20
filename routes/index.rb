@@ -10,15 +10,21 @@ module MCStatus
 
           servers = MCStatus::Models::Server.all
           pings = Hash.new
-          servers.map do |server|
+
+          servers.each do |server|
             latest_ping = get_latest_ping(server)
 
             pings[server] = if latest_ping.nil?
-                              nil
+                              {
+                                :max_players => "&inf;",
+                                :players_online => 0
+                              }
                             else
                               JSON.parse(latest_ping)
                             end
           end
+
+          pings = pings.sort_by { |server, ping| -ping["players_online"] }
 
           haml :index, :locals => {
             :servers => servers,
