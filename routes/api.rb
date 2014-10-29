@@ -31,7 +31,7 @@ module MCStatus
         end
 
         application.get '/api/servers/:id' do
-          granularity = 2
+          granularity = 4 
           since = Time.at(
             if params[:since]
               params[:since].to_i
